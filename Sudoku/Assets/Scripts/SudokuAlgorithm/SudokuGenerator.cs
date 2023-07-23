@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,7 +35,7 @@ namespace Sudoku
 
             while (randomNumList.Count > 0)
             {
-                int randomNum = randomNumList[SudokuCommon.Random.Next(randomNumList.Count)];
+                int randomNum = randomNumList[Random.Range(0, randomNumList.Count)];
                 randomNumList.Remove(randomNum);
 
                 if (IsValid(randomNum, row, col))
@@ -60,7 +59,7 @@ namespace Sudoku
             if (validIndex == _validRowList.Count)
             {
                 int[,] solution = new int[9, 9];
-                Array.Copy(sudokuArray, solution, 81);
+                System.Array.Copy(sudokuArray, solution, 81);
                 _solutionList.Add(solution);
 
                 if (_solutionList.Count > 1)
@@ -77,7 +76,7 @@ namespace Sudoku
 
             while (randomNumList.Count > 0)
             {
-                int randomNum = randomNumList[SudokuCommon.Random.Next(randomNumList.Count)];
+                int randomNum = randomNumList[Random.Range(0, randomNumList.Count)];
                 randomNumList.Remove(randomNum);
 
                 if (SudokuCommon.IsValid(randomNum, row, col, sudokuArray))
@@ -135,14 +134,14 @@ namespace Sudoku
 
             for (int i = emptyCount; i < targetCount; i++)
             {
-                int randomRow = SudokuCommon.Random.Next(0, 9);
-                int randomCol = SudokuCommon.Random.Next(0, 9);
+                int randomRow = Random.Range(0, 9);
+                int randomCol = Random.Range(0, 9);
                 int cacheNum;
 
                 while (sudokuArray[randomRow, randomCol] == 0)
                 {
-                    randomRow = SudokuCommon.Random.Next(0, 9);
-                    randomCol = SudokuCommon.Random.Next(0, 9);
+                    randomRow = Random.Range(0, 9);
+                    randomCol = Random.Range(0, 9);
                 }
 
                 cacheNum = sudokuArray[randomRow, randomCol];
@@ -166,6 +165,14 @@ namespace Sudoku
 
         public void InitializeSudoku()
         {
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    _sudokuArray[i, j] = 0;
+                }
+            }
+
             CanGenerateNumInSudoku(0, 0);
         }
     }

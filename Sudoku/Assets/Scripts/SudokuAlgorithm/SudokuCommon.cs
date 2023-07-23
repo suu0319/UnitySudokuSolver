@@ -6,8 +6,6 @@ namespace Sudoku
 {
     public static class SudokuCommon
     {
-        public static System.Random Random = new System.Random();
-
         public static bool IsValid(int num, int row, int col, int[,] sudokuArray)
         {
             int startRow = row / 3 * 3;
