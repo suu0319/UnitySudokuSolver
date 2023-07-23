@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,7 +26,7 @@ namespace Sudoku
 
             while (randomNumList.Count > 0)
             {
-                int randomNum = randomNumList[SudokuCommon.Random.Next(randomNumList.Count)];
+                int randomNum = randomNumList[Random.Range(0, randomNumList.Count)];
                 randomNumList.Remove(randomNum);
 
                 if (SudokuCommon.IsValid(randomNum, row, col, sudokuArray))
