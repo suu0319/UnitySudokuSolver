@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Sudoku
 {
-    public class SudokuSolver : MonoBehaviour
+    public class SudokuSolver : SudokuBase
     {
         private List<int> _validRowList = new List<int>();
         private List<int> _validColList = new List<int>();
@@ -29,7 +29,7 @@ namespace Sudoku
                 int randomNum = randomNumList[Random.Range(0, randomNumList.Count)];
                 randomNumList.Remove(randomNum);
 
-                if (SudokuCommon.IsValid(randomNum, row, col, sudokuArray))
+                if (IsValid(randomNum, row, col, sudokuArray))
                 {
                     sudokuArray[row, col] = randomNum;
 

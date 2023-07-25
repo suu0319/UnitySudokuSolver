@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Sudoku
 {
-    public class SudokuGenerator : MonoBehaviour
+    public class SudokuGenerator : SudokuBase
     {
         private List<int> _validRowList = new List<int>();
         private List<int> _validColList = new List<int>();
@@ -38,7 +38,7 @@ namespace Sudoku
                 int randomNum = randomNumList[Random.Range(0, randomNumList.Count)];
                 randomNumList.Remove(randomNum);
 
-                if (IsValid(randomNum, row, col))
+                if (IsValid(randomNum, row, col, _sudokuArray))
                 {
                     _sudokuArray[row, col] = randomNum;
 
@@ -79,7 +79,7 @@ namespace Sudoku
                 int randomNum = randomNumList[Random.Range(0, randomNumList.Count)];
                 randomNumList.Remove(randomNum);
 
-                if (SudokuCommon.IsValid(randomNum, row, col, sudokuArray))
+                if (IsValid(randomNum, row, col, sudokuArray))
                 {
                     sudokuArray[row, col] = randomNum;
 
@@ -88,41 +88,6 @@ namespace Sudoku
                     sudokuArray[row, col] = 0;
                 }
             }
-        }
-
-        private bool IsValid(int num, int row, int col)
-        {
-            int startRow = row / 3 * 3;
-            int startCol = col / 3 * 3;
-
-            for (int i = 0; i < 8; i++)
-            {
-                if (_sudokuArray[row, i] == num)
-                {
-                    return false;
-                }
-            }
-
-            for (int i = 0; i < 8; i++)
-            {
-                if (_sudokuArray[i, col] == num)
-                {
-                    return false;
-                }
-            }
-
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    if (_sudokuArray[startRow + i, startCol + j] == num)
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
         }
 
         private bool CanRandomResetSudoku(int emptyCount, int targetCount, int[,] sudokuArray)

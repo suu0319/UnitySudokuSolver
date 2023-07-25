@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Sudoku
 {
-    public static class SudokuCommon
+    public class SudokuBase : MonoBehaviour
     {
-        public static bool IsValid(int num, int row, int col, int[,] sudokuArray)
+        protected bool IsValid(int num, int row, int col, int[,] sudokuArray)
         {
             int startRow = row / 3 * 3;
             int startCol = col / 3 * 3;
