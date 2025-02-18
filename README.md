@@ -1,6 +1,6 @@
 # UnitySudokuSolver
 ## Intro
-Integrates my [Sudoku project](https://github.com/suu0319/Sudoku) with Unity to create a Sudoku generator and solver. The project is built using GitHub and WebGL to be accessible as a web application.
+Integrates my [Sudoku project](https://github.com/suu0319/Sudoku) with Unity to create a Sudoku generator and solver. The project is built using GitHub and WebGL to be accessible as a web application (540x960).
 
 ## Skills
 - Unity API
